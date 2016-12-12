@@ -1,8 +1,5 @@
 package subside.plugins.koth.events;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -14,11 +11,11 @@ import subside.plugins.koth.adapter.Koth;
  *
  */
 public class KothStartEvent extends Event implements IEvent, Cancellable {
-    private @Getter @Setter int captureTime;
-    private @Getter @Setter int maxLength;
-    private @Getter Koth koth;
-    private @Getter boolean scheduled;
-    private @Getter @Setter String entityType;
+    private int captureTime;
+    private int maxLength;
+    private Koth koth;
+    private boolean scheduled;
+    private String entityType;
     
     private boolean isCancelled;
     
@@ -49,5 +46,38 @@ public class KothStartEvent extends Event implements IEvent, Cancellable {
     @Override
     public void setCancelled(boolean cancel) {
         isCancelled = cancel;
+    }
+
+    public int getCaptureTime() {
+        return captureTime;
+    }
+
+    public void setCaptureTime(int captureTime) {
+        this.captureTime = captureTime;
+    }
+
+    public int getMaxLength() {
+        return maxLength;
+    }
+
+    public void setMaxLength(int maxLength) {
+        this.maxLength = maxLength;
+    }
+
+    @Override
+    public Koth getKoth() {
+        return koth;
+    }
+
+    public boolean isScheduled() {
+        return scheduled;
+    }
+
+    public String getEntityType() {
+        return entityType;
+    }
+
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
     }
 }

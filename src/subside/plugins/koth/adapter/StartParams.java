@@ -2,20 +2,19 @@ package subside.plugins.koth.adapter;
 
 import java.util.Random;
 
-import lombok.Getter;
-import lombok.Setter;
 import subside.plugins.koth.ConfigHandler;
 import subside.plugins.koth.exceptions.KothNotExistException;
 
 public class StartParams {
-        private @Getter @Setter Koth koth;
-        private @Getter @Setter String gamemode = "classic";
-        private @Getter @Setter int captureTime = 15*60;
-        private @Getter @Setter int maxRunTime = -1;
-        private @Getter @Setter int lootAmount = ConfigHandler.getCfgHandler().getLoot().getLootAmount();
-        private @Setter String lootChest = null;
-        private @Getter @Setter boolean isScheduled = false;
-        private @Getter @Setter String entityType = null;
+
+    private Koth koth;
+    private String gamemode = "classic";
+    private int captureTime = 15*60;
+    private int maxRunTime = -1;
+    private int lootAmount = ConfigHandler.getCfgHandler().getLoot().getLootAmount();
+    private String lootChest = null;
+    private boolean isScheduled = false;
+    private String entityType = null;
         
         public String getLootChest(){
             if(lootChest != null) return null;
@@ -38,4 +37,62 @@ public class StartParams {
             }
             throw new KothNotExistException(kth);
         }
+    public Koth getKoth() {
+        return koth;
     }
+
+    public void setKoth(Koth koth) {
+        this.koth = koth;
+    }
+
+    public String getGamemode() {
+        return gamemode;
+    }
+
+    public void setGamemode(String gamemode) {
+        this.gamemode = gamemode;
+    }
+
+    public int getCaptureTime() {
+        return captureTime;
+    }
+
+    public void setCaptureTime(int captureTime) {
+        this.captureTime = captureTime;
+    }
+
+    public int getMaxRunTime() {
+        return maxRunTime;
+    }
+
+    public void setMaxRunTime(int maxRunTime) {
+        this.maxRunTime = maxRunTime;
+    }
+
+    public int getLootAmount() {
+        return lootAmount;
+    }
+
+    public void setLootAmount(int lootAmount) {
+        this.lootAmount = lootAmount;
+    }
+    public void setLootChest(String lootChest) {
+        this.lootChest = lootChest;
+    }
+
+    public boolean isScheduled() {
+        return isScheduled;
+    }
+
+    public void setScheduled(boolean scheduled) {
+        isScheduled = scheduled;
+    }
+
+    public String getEntityType() {
+        return entityType;
+    }
+
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
+    }
+}

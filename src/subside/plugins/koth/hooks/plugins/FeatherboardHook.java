@@ -13,7 +13,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import lombok.Getter;
 import subside.plugins.koth.ConfigHandler;
 import subside.plugins.koth.ConfigHandler.Hooks.Featherboard;
 import subside.plugins.koth.KothPlugin;
@@ -24,13 +23,13 @@ import subside.plugins.koth.hooks.AbstractHook;
 import subside.plugins.koth.utils.Utils;
 
 public class FeatherboardHook extends AbstractHook implements Listener {
-    private @Getter boolean enabled = false;
+    private boolean enabled = false;
     private Koth koth;
     
     
-    private @Getter int range = 20;
-    private @Getter int rangeMargin = 5;
-    private @Getter String board;
+    private int range = 20;
+    private int rangeMargin = 5;
+    private String board;
     private List<OfflinePlayer> inRange;
     
     public FeatherboardHook(){
@@ -142,5 +141,21 @@ public class FeatherboardHook extends AbstractHook implements Listener {
             }
         }, 1);
     }
-    
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getRangeMargin() {
+        return rangeMargin;
+    }
+
+    public String getBoard() {
+        return board;
+    }
 }

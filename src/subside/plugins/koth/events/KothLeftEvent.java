@@ -4,8 +4,6 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import lombok.Getter;
-import lombok.Setter;
 import subside.plugins.koth.adapter.Capable;
 import subside.plugins.koth.adapter.Koth;
 import subside.plugins.koth.adapter.RunningKoth;
@@ -16,13 +14,13 @@ import subside.plugins.koth.adapter.captypes.Capper;
  *
  */
 public class KothLeftEvent extends Event implements IEvent, Cancellable {
-    private @Getter Capper capper;
+    private Capper capper;
     private boolean isCancelled;
-    private @Getter int amountSecondsCapped;
-    private @Getter @Setter Capper nextCapper;
-    private @Getter RunningKoth runningKoth;
-    private @Getter Koth koth;
-    private @Getter Capable captureZone;
+    private int amountSecondsCapped;
+    private Capper nextCapper;
+    private RunningKoth runningKoth;
+    private Koth koth;
+    private Capable captureZone;
     
     public KothLeftEvent(RunningKoth runningKoth, Capable captureZone, Capper capper, int amountSecondsCapped){
         this.runningKoth = runningKoth;
@@ -54,5 +52,34 @@ public class KothLeftEvent extends Event implements IEvent, Cancellable {
     
     public static HandlerList getHandlerList() {
         return handlers;
+    }
+
+    public Capper getCapper() {
+        return capper;
+    }
+
+    public int getAmountSecondsCapped() {
+        return amountSecondsCapped;
+    }
+
+    public Capper getNextCapper() {
+        return nextCapper;
+    }
+
+    public void setNextCapper(Capper nextCapper) {
+        this.nextCapper = nextCapper;
+    }
+
+    public RunningKoth getRunningKoth() {
+        return runningKoth;
+    }
+
+    @Override
+    public Koth getKoth() {
+        return koth;
+    }
+
+    public Capable getCaptureZone() {
+        return captureZone;
     }
 }

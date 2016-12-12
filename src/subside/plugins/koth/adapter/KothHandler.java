@@ -13,8 +13,6 @@ import org.bukkit.entity.Player;
 
 import com.google.common.collect.Lists;
 
-import lombok.Getter;
-import lombok.Setter;
 import subside.plugins.koth.ConfigHandler;
 import subside.plugins.koth.Lang;
 import subside.plugins.koth.adapter.RunningKoth.EndReason;
@@ -35,13 +33,13 @@ import subside.plugins.koth.utils.MessageBuilder;
  *
  */
 public class KothHandler {
-    private static @Getter KothHandler instance;
+    private static KothHandler instance;
     
-    private @Getter List<RunningKoth> runningKoths;
-    private @Getter List<Koth> availableKoths;
-    private @Getter List<Loot> loots;
-    private @Getter GamemodeRegistry gamemodeRegistry;
-    private @Getter CapEntityRegistry capEntityRegistry;
+    private List<RunningKoth> runningKoths;
+    private List<Koth> availableKoths;
+    private List<Loot> loots;
+    private GamemodeRegistry gamemodeRegistry;
+    private CapEntityRegistry capEntityRegistry;
     
     public KothHandler(){
         instance = this;
@@ -269,14 +267,26 @@ public class KothHandler {
     }
     
     public class GamemodeRegistry {
-        private @Getter HashMap<String, Class<? extends RunningKoth>> gamemodes;
-        private @Getter @Setter String currentMode;
+        private HashMap<String, Class<? extends RunningKoth>> gamemodes;
+        private String currentMode;
         
         public GamemodeRegistry(){
             gamemodes = new HashMap<>();
             currentMode = "classic";
         }
-        
+
+        public HashMap<String, Class<? extends RunningKoth>> getGamemodes() {
+            return gamemodes;
+        }
+
+        public String getCurrentMode() {
+            return currentMode;
+        }
+
+        public void setCurrentMode(String currentMode) {
+            this.currentMode = currentMode;
+        }
+
         public void register(String name, Class<? extends RunningKoth> clazz){
             gamemodes.put(name, clazz);
         }
@@ -299,8 +309,8 @@ public class KothHandler {
     }
     
     public class CapEntityRegistry {
-        private @Getter Map<String, Class<? extends Capper>> captureTypes = new HashMap<>();
-        private @Getter @Setter Class<? extends Capper> preferedClass;
+        private Map<String, Class<? extends Capper>> captureTypes = new HashMap<>();
+        private Class<? extends Capper> preferedClass;
 
         public CapEntityRegistry(){
             captureTypes = new HashMap<>();
@@ -309,7 +319,11 @@ public class KothHandler {
         public void registerCaptureType(String captureTypeIdentifier, Class<? extends Capper> clazz){
             captureTypes.put(captureTypeIdentifier, clazz);
         }
-        
+
+        public Map<String, Class<? extends Capper>> getCaptureTypes() {
+            return captureTypes;
+        }
+
         public Class<? extends Capper> getCaptureClass(String name){
             return captureTypes.get(name);
         }
@@ -343,5 +357,37 @@ public class KothHandler {
             
             return null;
         }
+
+        public Class<? extends Capper> getPreferedClass() {
+            return preferedClass;
+        }
+
+        public void setPreferedClass(Class<? extends Capper> preferedClass) {
+            this.preferedClass = preferedClass;
+        }
+    }
+
+    public List<RunningKoth> getRunningKoths() {
+        return runningKoths;
+    }
+
+    public static KothHandler getInstance() {
+        return instance;
+    }
+
+    public List<Koth> getAvailableKoths() {
+        return availableKoths;
+    }
+
+    public List<Loot> getLoots() {
+        return loots;
+    }
+
+    public GamemodeRegistry getGamemodeRegistry() {
+        return gamemodeRegistry;
+    }
+
+    public CapEntityRegistry getCapEntityRegistry() {
+        return capEntityRegistry;
     }
 }

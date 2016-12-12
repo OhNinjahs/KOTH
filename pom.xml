@@ -49,5 +49,12 @@
           <version>2.0.8</version>
          <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.kitteh</groupId>
+            <artifactId>VanishNoPacket</artifactId>
+            <version>3.10</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/VanishNoPacket.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

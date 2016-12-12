@@ -1,8 +1,5 @@
 package subside.plugins.koth.scheduler;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.json.simple.JSONObject;
 
 import subside.plugins.koth.ConfigHandler;
@@ -13,16 +10,16 @@ import subside.plugins.koth.utils.Utils;
 
 public class Schedule {
     private long nextEventMillis;
-    private @Getter @Setter String koth;
-    private @Getter @Setter int captureTime = 15;
-    private @Getter @Setter Day day;
-    private @Getter @Setter String time;
-    private @Getter @Setter int maxRunTime = -1;
-    private @Getter @Setter int lootAmount = -1;
-    private @Getter @Setter String lootChest;
-    private @Getter @Setter String entityType;
+    private String koth;
+    private int captureTime = 15;
+    private Day day;
+    private String time;
+    private int maxRunTime = -1;
+    private int lootAmount = -1;
+    private String lootChest;
+    private String entityType;
 
-    private @Getter boolean isBroadcasted = false;
+    private boolean isBroadcasted = false;
 
     public Schedule(String koth, Day day, String time) {
         this.koth = koth;
@@ -129,4 +126,77 @@ public class Schedule {
 
         return obj;
     }
+
+    public String getKoth() {
+        return koth;
+    }
+
+    public void setKoth(String koth) {
+        this.koth = koth;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public int getCaptureTime() {
+        return captureTime;
+    }
+
+    public void setCaptureTime(int captureTime) {
+        this.captureTime = captureTime;
+    }
+
+    public Day getDay() {
+        return day;
+    }
+
+    public void setDay(Day day) {
+        this.day = day;
+    }
+
+    public int getMaxRunTime() {
+        return maxRunTime;
+    }
+
+    public void setMaxRunTime(int maxRunTime) {
+        this.maxRunTime = maxRunTime;
+    }
+
+    public int getLootAmount() {
+        return lootAmount;
+    }
+
+    public void setLootAmount(int lootAmount) {
+        this.lootAmount = lootAmount;
+    }
+
+    public String getLootChest() {
+        return lootChest;
+    }
+
+    public void setLootChest(String lootChest) {
+        this.lootChest = lootChest;
+    }
+
+    public String getEntityType() {
+        return entityType;
+    }
+
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
+    }
+
+    public boolean isBroadcasted() {
+        return isBroadcasted;
+    }
+
+    public void setBroadcasted(boolean broadcasted) {
+        isBroadcasted = broadcasted;
+    }
+
 }

@@ -1,8 +1,5 @@
 package subside.plugins.koth.events;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -16,8 +13,8 @@ import subside.plugins.koth.adapter.Koth;
  */
 public class KothChestCreationEvent extends Event implements IEvent, Cancellable {
     private boolean isCancelled;
-    private @Getter Koth koth;
-    private @Getter @Setter ItemStack[] loot;
+    private Koth koth;
+    private ItemStack[] loot;
     
     public KothChestCreationEvent(Koth koth, ItemStack[] loot){
         this.koth = koth;
@@ -49,4 +46,16 @@ public class KothChestCreationEvent extends Event implements IEvent, Cancellable
         return handlers;
     }
 
+    @Override
+    public Koth getKoth() {
+        return koth;
+    }
+
+    public ItemStack[] getLoot() {
+        return loot;
+    }
+
+    public void setLoot(ItemStack[] loot) {
+        this.loot = loot;
+    }
 }

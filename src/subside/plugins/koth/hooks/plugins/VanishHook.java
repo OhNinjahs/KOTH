@@ -5,14 +5,12 @@ import org.bukkit.entity.Player;
 import org.kitteh.vanish.VanishManager;
 import org.kitteh.vanish.VanishPlugin;
 
-import lombok.Getter;
-import lombok.Setter;
 import subside.plugins.koth.ConfigHandler;
 import subside.plugins.koth.hooks.AbstractHook;
 import subside.plugins.koth.utils.Utils;
 
 public class VanishHook extends AbstractHook {
-    private @Getter @Setter boolean enabled = false;
+    private boolean enabled = false;
     private VanishManager vanishManager;
     
     public VanishHook(){
@@ -30,4 +28,12 @@ public class VanishHook extends AbstractHook {
         return !vanishManager.isVanished(player);
     }
 
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }
